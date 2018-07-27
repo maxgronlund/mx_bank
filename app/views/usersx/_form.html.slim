@@ -1,0 +1,26 @@
+= simple_form_for(@user) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :uuid
+    = f.input :name
+    = f.input :given_name
+    = f.input :family_name
+    = f.input :nickname
+    = f.input :preferred_username
+    = f.input :profile
+    = f.input :picture
+    = f.input :website
+    = f.input :email
+    = f.input :email_verified
+    = f.input :gender
+    = f.input :birthdate
+    = f.input :zoneinfo
+    = f.input :locale
+    = f.input :phone_number
+    = f.input :phone_number_verified
+    = f.input :address
+    = f.input :public_key
+
+  .form-actions
+    = f.button :submit

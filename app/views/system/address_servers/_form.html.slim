@@ -1,0 +1,11 @@
+= simple_form_for(@system_address_server) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :url
+    = f.input :uuid
+    = f.input :public_key
+
+  .form-actions
+    = f.button :submit

@@ -10,6 +10,18 @@ html
   body
 
     h4 = link_to Rails.configuration.site_name, root_path
-    = link_to 'Admin', system_admin_index_path
+
+    - if current_user
+      = link_to 'Admin', system_admin_index_path
+      '&nbsp;|&nbsp;
+      =< link_to 'Users', users_path
+      '&nbsp;|&nbsp;
+      =< link_to 'My Account', user_path(current_user.uuid)
+      '&nbsp;|&nbsp;
+      =< link_to 'Log out', session_path(1), method: :delete
+    - else
+      = link_to 'Sign up', sign_up_index_path
+      '&nbsp;|&nbsp;
+      =< link_to 'Log in', new_session_path
 
     = yield

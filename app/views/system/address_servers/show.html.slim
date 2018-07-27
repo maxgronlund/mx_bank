@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @system_address_server.name
+p
+  strong Url:
+  = @system_address_server.url
+p
+  strong Uuid:
+  = @system_address_server.uuid
+p
+  strong Public key:
+  = @system_address_server.public_key
+
+=> link_to 'Edit', edit_system_address_server_path(@system_address_server)
+'|
+=< link_to 'Back', system_address_servers_path

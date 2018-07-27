@@ -1,0 +1,17 @@
+h1 = "Welcome to #{Rails.configuration.site_name}"
+- if params[:id].present?
+  h3
+    'Your account was success fully created
+h3 Log in
+= form_tag(session_index_path, :method => "POST") do
+
+  = label_tag(:email, "email:")
+  = text_field_tag(:email, @email)
+  br
+  = label_tag(:password, "password:")
+  = text_field_tag(:password)
+
+  = hidden_field :id, params[:id]
+
+  br
+  = submit_tag("Log in")

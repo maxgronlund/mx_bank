@@ -1,0 +1,58 @@
+hr
+p#notice = notice
+
+p
+  strong Name:
+  = @user.name
+p
+  strong Given name:
+  = @user.given_name
+p
+  strong Family name:
+  = @user.family_name
+p
+  strong Nickname:
+  = @user.nickname
+p
+  strong Preferred username:
+  = @user.preferred_username
+p
+  strong Profile:
+  = @user.profile
+p
+  strong Picture:
+  = @user.picture
+p
+  strong Website:
+  = @user.website
+p
+  strong Email:
+  = @user.email
+p
+  strong Email verified:
+  = @user.email_verified
+p
+  strong Gender:
+  = @user.gender
+p
+  strong Birthdate:
+  = @user.birthdate
+p
+  strong Zoneinfo:
+  = @user.zoneinfo
+p
+  strong Locale:
+  = @user.locale
+p
+  strong Phone number:
+  = @user.phone_number
+p
+  strong Phone number verified:
+  = @user.phone_number_verified
+p
+  strong Address:
+  = @user.address
+
+=> link_to 'Edit', edit_user_path(@user.uuid)
+'|
+=< link_to 'Back', users_path

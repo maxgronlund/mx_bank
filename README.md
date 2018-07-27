@@ -20,5 +20,10 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+  $ git push origin master
+  $ heroku run rake db:migrate --app mx-bank
+
+* How to log on heroku
+  $ heroku logs --tail --app mx-bank
 
 * ...

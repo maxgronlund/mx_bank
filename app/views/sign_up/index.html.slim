@@ -1,0 +1,3 @@
+h1 Sign Up
+p Demonstrates how to sign up through an authorization provider
+= link_to 'Go to uthorization provider', @authorization_server[:url] + '/signup/new?redirect_to=' + "#{request.base_url}/session/new" + "&host_name=" + Rails.configuration.site_name

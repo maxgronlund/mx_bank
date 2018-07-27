@@ -1,0 +1,27 @@
+h1 Listing system_address_servers
+
+table
+  thead
+    tr
+      th Name
+      th Url
+      th Uuid
+      th Public key
+      th
+      th
+      th
+
+  tbody
+    - @system_address_servers.each do |system_address_server|
+      tr
+        td = system_address_server.name
+        td = system_address_server.url
+        td = system_address_server.uuid
+        td = system_address_server.public_key
+        td = link_to 'Show', system_address_server
+        td = link_to 'Edit', edit_system_address_server_path(system_address_server)
+        td = link_to 'Destroy', system_address_server, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Address server', new_system_address_server_path

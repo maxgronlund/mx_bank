@@ -1,0 +1,55 @@
+h1 Listing users
+
+table
+  thead
+    tr
+      th Uuid
+      th Name
+      th Given name
+      th Family name
+      th Nickname
+      th Preferred username
+      th Profile
+      th Picture
+      th Website
+      th Email
+      th Email verified
+      th Gender
+      th Birthdate
+      th Zoneinfo
+      th Locale
+      th Phone number
+      th Phone number verified
+      th Address
+      th Public key
+      th
+      th
+      th
+
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.uuid
+        td = user.name
+        td = user.given_name
+        td = user.family_name
+        td = user.nickname
+        td = user.preferred_username
+        td = user.profile
+        td = user.picture
+        td = user.website
+        td = user.email
+        td = user.email_verified
+        td = user.gender
+        td = user.birthdate
+        td = user.zoneinfo
+        td = user.locale
+        td = user.phone_number
+        td = user.phone_number_verified
+        td = user.address
+        td = user.public_key
+        td = link_to 'Show', user.uuid
+        td = link_to 'Edit', edit_user_path(user.uuid)
+        td = link_to 'Destroy', user.uuid, data: { confirm: 'Are you sure?' }, method: :delete
+
+

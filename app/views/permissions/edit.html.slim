@@ -1,0 +1,17 @@
+h1 Permit this site to
+
+= form_tag(permission_path, :method => "PUT") do
+
+  = label_tag(:pay_as_you_go, "Pay as you go:")
+  = check_box_tag(:pay_as_you_go, 'yes', true)
+  br
+  = label_tag(:notify_friends, "Notify friend:")
+  = check_box_tag(:notify_friends, 'yes', true)
+  br
+  = label_tag(:update_global_profile, "Update my global profile:")
+  = check_box_tag(:update_global_profile, 'yes', true)
+  br
+  = hidden_field :id, params[:id]
+
+  br
+  = submit_tag("Yay do it")
