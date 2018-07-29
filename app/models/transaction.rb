@@ -27,15 +27,14 @@ class Transaction < ApplicationRecord
 
   # usage
   # Transaction.retrive_transactions(current_user)
-  def self.retrive_transactions(user)
-    return if user.nil?
-    transactions = user.retrive_transactions
+  def self.import_transactions(transactions)
     transactions.each do |transaction|
-      ap complete_transaction(transaction)
+      import_transaction(transaction)
     end
   end
 
-  def self.complete_transaction(transaction)
+
+  def self.import_transaction(transaction)
     return 'sender not found' if User.find_by(uuid: transaction[:sender]).nil?
 
     transaction[:recipient] =
@@ -71,4 +70,23 @@ class Transaction < ApplicationRecord
     recipient.uuid
   end
 
+  # usage
+  # Transaction.retrive_for(uuid)
+  def self.retrive_for(uuid)
+    headers = {
+      "Requester" => uuid,
+      "TransactionType" => 'payment_for_usage'
+    }
+    response =
+      HTTParty
+      .get(
+        public_ledger[:url] + '/api/v1/retrieve_transaction_requests',
+        format: :plain,
+        headers: headers)
+    JSON.parse( response, symbolize_names: true)
+  end
+
+  def self.public_ledger
+    System::AddressServer.public_ledger
+  end
 end

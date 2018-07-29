@@ -32,4 +32,8 @@ module System
   def self.admin_user
     User.find_by(uuid: administrator.uuid)
   end
+
+  def self.uuid
+    @@uuid ||= Rails.configuration.uuid
+  end
 end

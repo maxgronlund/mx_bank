@@ -88,7 +88,7 @@ class User < ApplicationRecord
     response =
       HTTParty
       .get(
-        public_ledger[:url] + '/api/v1/user_by_email/'+ SecureRandom.uuid,
+        System::AddressServer.public_ledger[:url] + '/api/v1/user_by_email/'+ SecureRandom.uuid,
         format: :plain,
         headers: headers)
     JSON.parse( response, symbolize_names: true)
@@ -96,23 +96,5 @@ class User < ApplicationRecord
 
   def self.public_ledger
     System::AddressServer.public_ledger
-  end
-
-  def retrive_transactions
-    headers = {
-      "Requester" => uuid,
-      "TransactionType" => 'transaction_request'
-    }
-    response =
-      HTTParty
-      .get(
-        User.public_ledger[:url]+ '/api/v1/retrieve_transaction_requests',
-        format: :plain,
-        headers: headers)
-    JSON.parse( response, symbolize_names: true)
-
-    # System::AddressServer.public_ledger
-    # User.public_ledger[:url] + '/api/v1/retrieve_transaction_requests'
-
   end
 end
