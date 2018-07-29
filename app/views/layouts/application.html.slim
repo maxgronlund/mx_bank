@@ -9,19 +9,31 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
 
-    h4 = link_to Rails.configuration.site_name, root_path
+    h3 = link_to Rails.configuration.site_name, root_path
 
+
+    br
     - if current_user
-      = link_to 'Admin', system_admin_index_path
+      = link_to 'Admin', system_admins_path
       '&nbsp;|&nbsp;
       =< link_to 'Users', users_path
       '&nbsp;|&nbsp;
-      =< link_to 'My Account', user_path(current_user.uuid)
+      =< link_to 'Profile', user_path(current_user.uuid)
+      '&nbsp;|&nbsp;
+      =< link_to 'Account', account_index_path
       '&nbsp;|&nbsp;
       =< link_to 'Log out', session_path(1), method: :delete
     - else
       = link_to 'Sign up', sign_up_index_path
-      '&nbsp;|&nbsp;
-      =< link_to 'Log in', new_session_path
-
+    hr
+    - if current_user
+        small
+          = "Logged in as: #{current_user.name}"
+          '&nbsp;&nbsp;|&nbsp;&nbsp;
+          'Account:&nbsp;
+          = current_user.uuid
     = yield
+    hr
+    small = "Site id ##{Rails.configuration.uuid}"
+    br
+    small = link_to "Adinistrator: #{System.administrator.uuid}", edit_system_admin_path(System.administrator)

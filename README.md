@@ -26,4 +26,5 @@ Things you may want to cover:
 * How to log on heroku
   $ heroku logs --tail --app mx-bank
 
-* ...
+* Run console
+  $ heroku run rails console --app mx-bank

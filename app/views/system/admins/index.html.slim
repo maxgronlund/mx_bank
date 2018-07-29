@@ -1,0 +1,40 @@
+br
+= "System balance: #{number_to_currency(@balance)}"
+
+h1 System balance
+
+table
+  thead
+    tr
+      th Payment
+      th Type
+      th Date
+      th Account
+      th Amount
+      th
+  tbody
+    - @transactions.each do |transaction|
+      tr
+        td = t(transaction.transaction_type)
+        td
+          - if transaction.sender == Rails.configuration.uuid
+            'Debit
+          - else
+            'Credit
+        td = transaction.created_at.strftime("%F")
+        td
+          - if transaction.sender == Rails.configuration.uuid
+            = transaction.recipient
+          - else
+            = transaction.sender
+
+        td = number_to_currency(transaction.amount)
+        td = link_to 'Show', transaction_path(transaction.uuid)
+    tr
+      td
+      td
+      td
+      td
+      td
+        b = number_to_currency(@balance)
+      td

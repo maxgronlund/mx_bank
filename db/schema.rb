@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_27_083805) do
+ActiveRecord::Schema.define(version: 2018_07_29_090506) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -21,6 +22,24 @@ ActiveRecord::Schema.define(version: 2018_07_27_083805) do
     t.string "url"
     t.uuid "uuid"
     t.text "public_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "system_admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "transaction_type"
+    t.string "state", default: "pending"
+    t.uuid "uuid"
+    t.decimal "amount"
+    t.uuid "sender"
+    t.uuid "recipient"
+    t.hstore "meta"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

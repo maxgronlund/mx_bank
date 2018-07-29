@@ -10,15 +10,20 @@ class SessionController < ApplicationController
     params.permit!
     email =  params[:email]
     user_from_ledger  = User.from_ledger_by_email(email)
-
-    @permission = User.permission_from_ledger( user_from_ledger[:uuid] )
-    if @permission[:permissions].nil?
+    if user_from_ledger[:uuid].nil?
+      redirect_to sign_up_index_path
+      return
+    else
       session[:user_id] = user_from_ledger[:uuid]
+    end
+    permission = User.permission_from_ledger( user_from_ledger[:uuid] )
+
+    if permission[:permissions].nil?
       current_user.copy_profile_from_ledger(user_from_ledger)
-      redirect_to edit_permission_path(@permission[:uuid])
+      redirect_to edit_permission_path(permission[:uuid])
       return
     end
-    redirect_to new_session_path
+    redirect_to current_user.present? ? root_path : new_session_path
   end
 
   def destroy

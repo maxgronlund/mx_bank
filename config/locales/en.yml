@@ -30,4 +30,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  payment_with_credit_cart: 'Transaction from credit card'
+  payment_from_payment_gateway: 'Transaction from payment gateway'
+  tansfer_between_accounts: 'Transfer from account'
+  payment_with_cryptocurrency: 'Transaction from cryptocurrency'
+
+
+  visa: 'Visa'
+  master_card: 'MasterCard'
+  bitcoins: 'Bitcoins'
+  stripe: 'Stripe'
+  paypall: 'Paypall'

@@ -1,0 +1,8 @@
+= simple_form_for(@system_admin) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :uuid
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,19 @@
+h1 Add credit to your account
+b Simulates a transaction from a payment gateway (paypall stripe mastercard etc...)
+br
+br
+
+= simple_form_for [@transaction], url: url_for(action: 'create', controller: 'credits'), method: 'POST' do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :amount
+    = f.input :payment_provider , collection: System::PAYMENT_PROVIDERS, include_blank: false
+    / = f.input :sender
+    / = f.input :recipient
+    / = f.input :meta
+  br
+  .form-actions
+    = f.button :submit
+
+

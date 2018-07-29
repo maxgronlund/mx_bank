@@ -1,56 +1,58 @@
-hr
-p#notice = notice
 
+/p#notice = notice
 p
-  strong Name:
+  strong Account:&nbsp;
+  = @user.uuid
+p
+  strong Name:&nbsp;
   = @user.name
+/ p
+/   strong Given name:&nbsp;
+/   = @user.given_name
 p
-  strong Given name:
-  = @user.given_name
-p
-  strong Family name:
+  strong Family name:&nbsp;
   = @user.family_name
 p
-  strong Nickname:
+  strong Nickname:&nbsp;
   = @user.nickname
 p
-  strong Preferred username:
+  strong Preferred username:&nbsp;
   = @user.preferred_username
 p
-  strong Profile:
+  strong Profile:&nbsp;
   = @user.profile
 p
-  strong Picture:
+  strong Picture:&nbsp;
   = @user.picture
 p
-  strong Website:
+  strong Website:&nbsp;
   = @user.website
 p
-  strong Email:
+  strong Email:&nbsp;
   = @user.email
 p
-  strong Email verified:
+  strong Email verified:&nbsp;
   = @user.email_verified
 p
-  strong Gender:
+  strong Gender:&nbsp;
   = @user.gender
 p
-  strong Birthdate:
+  strong Birthdate:&nbsp;
   = @user.birthdate
 p
-  strong Zoneinfo:
+  strong Zoneinfo:&nbsp;
   = @user.zoneinfo
 p
-  strong Locale:
+  strong Locale:&nbsp;
   = @user.locale
 p
-  strong Phone number:
+  strong Phone number:&nbsp;
   = @user.phone_number
 p
-  strong Phone number verified:
+  strong Phone number verified:&nbsp;
   = @user.phone_number_verified
 p
-  strong Address:
+  strong Address:&nbsp;
   = @user.address
 
 => link_to 'Edit', edit_user_path(@user.uuid)

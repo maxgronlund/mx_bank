@@ -14,6 +14,7 @@ module MxBank
     config.uuid =  "970cc839-f922-403f-9d62-9c8201e163b2"
     config.site_name =  "Mx bank"
 
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

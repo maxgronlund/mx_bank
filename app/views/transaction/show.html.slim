@@ -1,0 +1,23 @@
+h1 Transaction#
+p
+  strong Type:&nbsp;
+  = t(@transaction.transaction_type)
+p
+  strong Date:&nbsp;
+  = l @transaction.created_at
+p
+  strong Amount:&nbsp;
+  = @transaction.amount
+p
+  strong Sender:&nbsp;
+  = @transaction.sender
+p
+  strong Recipient:&nbsp;
+  = @transaction.recipient
+p
+  i Details
+  br
+  - @transaction.meta.each do |key, value|
+    strong = "#{key.to_s.capitalize}: "
+    = value.capitalize
+    br

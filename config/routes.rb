@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :permissions, only: [:edit, :update]
+  resources :transaction, only: %i[show]
+  resources :account, only: %i[index]
+  resources :credits, only: %i[index new create destroy]
+  # resources :payments
+  resources :permissions, only: %i[edit update]
   namespace :system do
     resources :address_servers
-    get 'admin/index'
+    resources :admins
   end
   namespace :system do
     resources :hosts
