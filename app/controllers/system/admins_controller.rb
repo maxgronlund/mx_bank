@@ -1,5 +1,6 @@
 class System::AdminsController < ApplicationController
   def index
+    Transaction.retrive_transactions(System.admin_user)
     @transactions =
       Transaction
       .where(recipient: System.administrator.uuid)

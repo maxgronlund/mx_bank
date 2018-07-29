@@ -24,8 +24,12 @@ module System
   end
 
   def self.balance
-    user = User.find_by(uuid: administrator.uuid)
-    return 0.0 if user.nil?
-    user.balance
+    return 0.0 if admin_user.nil?
+    Transaction.where(recipient: admin_user.uuid).sum(:amount)
+    #admin_user.balance
+  end
+
+  def self.admin_user
+    User.find_by(uuid: administrator.uuid)
   end
 end

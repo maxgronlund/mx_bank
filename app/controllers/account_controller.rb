@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   def index
-    retrive_transactions
+    Transaction.retrive_transactions(current_user)
     @transactions =
       Transaction
       .where(recipient: current_user.uuid)
