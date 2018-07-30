@@ -1,7 +1,7 @@
 class AccountController < ApplicationController
   def index
-    ap transactions = Transaction.retrive_for(current_user.uuid)
-    Transaction.import_transactions(transactions)
+    transactions = Transaction.retrive_for(current_user.uuid)
+    Transaction.import(transactions)
     @transactions =
       Transaction
       .where(recipient: current_user.uuid)

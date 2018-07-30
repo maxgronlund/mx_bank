@@ -1,10 +1,11 @@
 class System::AdminsController < ApplicationController
   def index
-    Transaction.retrive_for(Rails.configuration.uuid)
+    transactions = Transaction.retrive_for(Rails.configuration.uuid)
+    Transaction.import(transactions)
     @transactions =
       Transaction
-      .where(recipient: System.administrator.uuid)
-      .or(Transaction.where(sender: System.administrator.uuid))
+      .where(recipient: '970cc839-f922-403f-9d62-9c8201e163b2')
+      .or(Transaction.where(sender: transaction_ids))
       .order(created_at: :desc)
 
     @balance = System.balance
@@ -24,6 +25,10 @@ class System::AdminsController < ApplicationController
   end
 
   private
+
+  def transaction_ids
+     @transaction_ids ||= [Rails.configuration.uuid]
+  end
 
   def system_admin_params
     params.require(:system_admin).permit(:uuid)

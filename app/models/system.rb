@@ -25,7 +25,7 @@ module System
 
   def self.balance
     return 0.0 if admin_user.nil?
-    Transaction.where(recipient: admin_user.uuid).sum(:amount)
+    Transaction.where(recipient: Rails.configuration.uuid).sum(:amount)
     #admin_user.balance
   end
 

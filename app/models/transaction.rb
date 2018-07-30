@@ -27,20 +27,20 @@ class Transaction < ApplicationRecord
 
   # usage
   # Transaction.retrive_transactions(current_user)
-  def self.import_transactions(transactions)
+  def self.import(transactions)
     transactions.each do |transaction|
-      import_transaction(transaction)
+      parse_transaction(transaction)
     end
   end
 
 
-  def self.import_transaction(transaction)
-    return 'sender not found' if User.find_by(uuid: transaction[:sender]).nil?
+  def self.parse_transaction(transaction)
+    # return 'sender not found' if User.find_by(uuid: transaction[:sender]).nil?
 
-    transaction[:recipient] =
-      administrator_uuid(transaction[:recipient])
+    # transaction[:recipient] =
+    #   administrator_uuid(transaction[:recipient])
 
-    return 'recipient not found' if User.find_by(uuid: transaction[:recipient]).nil?
+    # return 'recipient not found' if User.find_by(uuid: transaction[:recipient]).nil?
     create_transaction(transaction)
   end
 
